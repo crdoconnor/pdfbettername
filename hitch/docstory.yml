@@ -1,0 +1,38 @@
+story: |
+  {%- if include_title -%}
+  ---
+  title: {{ name }}
+  ---
+  # {{ name }}
+  {% endif %}
+  
+  {{ about }}
+  
+  {% for name, prop in given.items() %}
+  {{ prop.documentation() }}
+  {% endfor %}
+  
+  {% for step in steps %}
+  {{ step.documentation() }}
+  {% endfor %}
+
+given:
+  files: |
+    {% for filename, contents in files.items() %}{% set ext = filename.split(".")[-1] %}
+
+    {{ filename }}
+    ```{% if ext == "py" %}python{% elif ext == "sh" %}bash{% endif %}
+    {{ contents }}
+    ```
+    {% endfor %}
+steps:
+  orji: |
+    Running:
+    ```bash
+    orji {{ cmd }}
+    ```
+    
+    {% if error %}Will error with:{% else %}Will output:{% endif %}
+    ```
+    {{ output }}
+    ```

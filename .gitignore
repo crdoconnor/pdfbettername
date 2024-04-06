@@ -1,0 +1,12 @@
+pdfbettername.egg-info/
+.vscode/
+venv/
+
+docs/snippets/
+docs/draft/
+docs/src/using/
+
+hitchpylibrarytoolkit/
+
+*.pyc
+*.kate-swp

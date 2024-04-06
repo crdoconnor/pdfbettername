@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["pdfbettername"]
+
+[project]
+name = "pdfbettername"
+authors = [
+    {name = "Colm O'Connor", email = "colm.oconnor.github@gmail.com"},
+]
+description = "Read a PDF and figure out a better name for the file based upon the textual content."
+license = {text = "MIT"}
+requires-python = ">=3.7.0"
+keywords = ["pdf", "cli", "naming"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Text Processing :: Markup",
+    "Topic :: Software Development :: Libraries",
+    "Natural Language :: English",
+]
+dependencies = [
+    "tika",
+    "date-extractor",
+    "keybert",
+]
+dynamic = ["version", "readme"]
+
+[project.scripts]
+orji = "pdfbettername:cli"
+
+[project.urls]
+homepage = "https://github.com/crdoconnor/pdfbettername"
+documentation = "https://github.com/crdoconnor/pdfbettername"
+repository = "https://github.com/crdoconnor/pdfbettername"
+changelog = "https://github.com/crdoconnor/pdfbettername"
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.md",], content-type = "text/markdown"}
+version = {file = "VERSION"}
